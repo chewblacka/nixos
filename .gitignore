@@ -1,0 +1,20 @@
+# Ignore everything
+*
+# Include:
+!.gitignore
+!configuration.nix
+!desktop.nix
+!disko-config.nix
+!flake.nix
+!flatpak.nix
+!impermanence.nix
+!packages.nix
+!users.nix
+!vm.nix
+!scripts/changepass.sh
+!scripts/cruft.sh
+!scripts/nixos-rebuild.sh
+!scripts/nix-setup.sh
+!.github/
+!.github/install.sh
+!.github/README.md
