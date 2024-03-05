@@ -11,9 +11,9 @@
 !packages.nix
 !users.nix
 !vm.nix
+!scripts
 !scripts/changepass.sh
 !scripts/cruft.sh
-!scripts/nixos-rebuild.sh
 !scripts/nix-setup.sh
 !.github/
 !.github/install.sh

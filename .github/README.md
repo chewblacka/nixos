@@ -18,17 +18,17 @@ Configuration files for NixOS with an ephemeral root, erased every boot.
   - `cruft.sh` - shows all files written to `/` since boot (erased next boot)
 
 ## Install Instructions
-- Boot a [NixOS install ISO](https://github.com/chewblacka/nixos-iso/)
-- Once in a shell clone this repo:
-  ```
-  curl -L https://github.com/chewblacka/nixos/archive/refs/heads/main.zip --output main.zip
-  unzip main.zip
-  ```
-- Run the install script:
+1. Boot a [NixOS install ISO](https://github.com/chewblacka/nixos-iso/)
+2. Once in a shell clone this repo:
+```
+curl -L https://github.com/chewblacka/nixos/archive/refs/heads/main.zip --output main.zip
+unzip main.zip
+```
+  
+3. Finally run the install script:
   ```
   ./nixos-main/scripts/nix-setup.sh
-which will install the necessary files for impermanence, then prompt you to proceed with the ISO NixOS install:
-
+  ````
 Credit: Originally forked from [Guekka's Nixos as a Server](https://guekka.github.io)
 but changed quite substantially since then.
 
