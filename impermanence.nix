@@ -54,7 +54,7 @@ in
 
   environment.sessionVariables = {
     PATH = [ 
-      "/persist/scripts"
+      "/persist/nixos/scripts"
     ];
   };
 }
