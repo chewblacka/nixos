@@ -1,4 +1,5 @@
-# Disko Inforno - Burn baby burn! A Nixos Impermanence Desktop config
+# Disko Inferno - Burn baby burn! 
+## A Nixos Impermanence Desktop config
 Configuration files for NixOS with an ephemeral root, erased every boot.
 
 ## What this repo gives you:
