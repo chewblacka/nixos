@@ -19,15 +19,16 @@ Configuration files for NixOS with an ephemeral root, erased every boot.
 
 ## Install Instructions
 - Boot a [NixOS install ISO](https://github.com/chewblacka/nixos-iso/)
-- Then in a shell (either directly of via ssh) clone this repo:
+- Then in a shell clone this repo:
   ```
   curl -L https://github.com/chewblacka/nixos/archive/refs/heads/main.zip --output main.zip
   unzip main.zip
   ```
-- Run the install script which will install the necessary files for impermanence, then prompt you to proceed with the ISO NixOS install:
+- Run the install script:
   ```
   ./nixos-main/scripts/nix-setup.sh
   ```
+- This will install the necessary files for impermanence, then prompt you to proceed with the ISO NixOS install:
 
 Credit: Originally forked from [Guekka's Nixos as a Server](https://guekka.github.io)
 but changed quite substantially since then.
