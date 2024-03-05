@@ -27,7 +27,6 @@ Configuration files for NixOS with an ephemeral root, erased every boot.
 - Run the install script:
   ```
   ./nixos-main/scripts/nix-setup.sh
-  ```
 which will install the necessary files for impermanence, then prompt you to proceed with the ISO NixOS install:
 
 Credit: Originally forked from [Guekka's Nixos as a Server](https://guekka.github.io)
