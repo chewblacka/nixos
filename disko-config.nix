@@ -16,7 +16,7 @@ in
           type = "gpt";
           partitions = {
             ESP = {
-              name = "ESP";
+              # name = "ESP";
               start = "1MiB";
               end = "1G";
               type = "EF00";
@@ -27,7 +27,7 @@ in
               };
             };
             swap = {
-              name = "swap";
+              # name = "swap";
               start = "1G";
               end = "9G";
               content = {
@@ -36,7 +36,7 @@ in
               };
             };
             root = {
-              name = "root";
+              # name = "root";
               start = "9G";
               end = "100%";
               content = {
@@ -118,7 +118,7 @@ in
           type = "gpt";
           partitions = {
             DATA = {
-              name = "DATA";
+              # name = "DATA";
               start = "1MiB";
               end = "100%";
               content = {
