@@ -15,12 +15,11 @@ Configuration files for NixOS with an ephemeral root, erased every boot.
   - `nix-setup.sh` - run this to install (full install instructions below)
 - Helper scripts to manage after install (placed in `/persist/scripts` and added to `$PATH`) 
   - `changepass.sh` - script to change user password in a running system
-  - `push-to-git.sh` - script to push `/etc/nixos` files to a git repo
   - `cruft.sh` - shows all files written to `/` since boot (erased next boot)
 
 ## Install Instructions
 - Boot a [NixOS install ISO](https://github.com/chewblacka/nixos-iso/)
-- Then in a shell (either directly of vias ssh) clone this repo, e.g.
+- Then in a shell (either directly of via ssh) clone this repo:
   ```
   curl -L https://github.com/chewblacka/nixos/archive/refs/heads/main.zip --output main.zip
   unzip main.zip
