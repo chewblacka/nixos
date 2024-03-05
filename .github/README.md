@@ -5,7 +5,7 @@ Configuration files for NixOS with an ephemeral root, erased every boot.
 ## What this repo gives you:
 - A flake-ified config
 - Declarative Disk setup & management with [Disko](https://github.com/nix-community/disko)
-- Ephemeral root (with either BTRFS or tmpfs) using the nixos [impermamence](https://github.com/nix-community/impermanence) module
+- Ephemeral root using the [impermamence](https://github.com/nix-community/impermanence) module
 - Modularized config files, including:
   - `myparams.nix` - initial set of install parameters (username, hostname, ssh-key & Desktop). Edit directly or via the install script.
   - `packages.nix` - packages divided into categories for easy modification / maintenence
