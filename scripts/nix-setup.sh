@@ -14,7 +14,7 @@ function get_user_info {
     # Gather the 1.Username, 2.Password & 3.Hostname
     # 1. Username
     echo "Lets set the username"
-    DEFAULT_UNAME=$(grep -oP 'myusername =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
+    DEFAULT_UNAME=$(grep -oP 'myusername =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
     echo "Default username is: $DEFAULT_UNAME"
 
     read -n 1 -srp $'Is this ok? (Y/n) ' key
@@ -42,7 +42,7 @@ function get_user_info {
     echo
     echo
     echo "Now lets set the Hostname"
-    DEFAULT_HOST=$(grep -oP 'myhostname =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
+    DEFAULT_HOST=$(grep -oP 'myhostname =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
     echo "Default Hostname is: $DEFAULT_HOST"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
     echo
@@ -60,7 +60,7 @@ function get_user_info {
     echo
     echo "Now choose the Desktop to boot into from:"
     echo "kde pantheon"
-    DEFAULT_DESKTOP=$(grep -oP 'mydesktop =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
+    DEFAULT_DESKTOP=$(grep -oP 'mydesktop =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
     echo "Default Desktop is: $DEFAULT_DESKTOP"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
     echo
@@ -88,7 +88,7 @@ function get_user_info {
     echo
     echo
     echo "Now lets set the SSH key"
-    DEFAULT_SSHKEY=$(grep -oP 'mysshkey =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
+    DEFAULT_SSHKEY=$(grep -oP 'mysshkey =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
     SSHKEY=$DEFAULT_SSHKEY
     echo "Current SSH Key is: $DEFAULT_SSHKEY"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
@@ -101,13 +101,15 @@ function get_user_info {
     done
 
     # Write out the username 
-    sed -i "s#myusername = \".*\";#myusername = \"${UNAME}\";#" "$NIXDIR/myparams.nix"
+    sed -i "s#myusername = \".*\";#myusername = \"${UNAME}\";#" "$NIXDIR/myparams_init.nix"
     # Write out the hostname 
-    sed -i "s#myhostname = \".*\";#myhostname = \"${HOST}\";#" "$NIXDIR/myparams.nix"
+    sed -i "s#myhostname = \".*\";#myhostname = \"${HOST}\";#" "$NIXDIR/myparams_init.nix"
     # Write out the desktop 
-    sed -i "s#mydesktop = \".*\";#mydesktop = \"${DESKTOP}\";#" "$NIXDIR/myparams.nix"
+    sed -i "s#mydesktop = \".*\";#mydesktop = \"${DESKTOP}\";#" "$NIXDIR/myparams_init.nix"
     # Write out the ssh-key 
-    sed -i "s#mysshkey = \".*\";#mysshkey = \"${SSHKEY}\";#" "$NIXDIR/myparams.nix"
+    sed -i "s#mysshkey = \".*\";#mysshkey = \"${SSHKEY}\";#" "$NIXDIR/myparams_init.nix"
+    # copy the myparams_init file to myparams
+    cp "$NIXDIR/myparams_init.nix" "$NIXDIR/myparams.nix"
 }
 
 function format_disko {
