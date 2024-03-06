@@ -3,23 +3,23 @@
 Configuration files for NixOS with an ephemeral root, erased every boot.
 
 ## What this repo gives you:
-- A flake-ified config
-- Declarative Disk setup & management with [Disko](https://github.com/nix-community/disko)
-- Ephemeral root using the [impermamence](https://github.com/nix-community/impermanence) module
+- Flake-based config
+- Declarative disk setup & management with [Disko](https://github.com/nix-community/disko)
+- Ephemeral root file-system using the [Impermamence](https://github.com/nix-community/impermanence) module
 - Modularized config files, including:
-  - `myparams.nix` - initial set of install parameters (username, hostname, ssh-key & Desktop). Edit directly or via the install script.
-  - `packages.nix` - packages divided into categories for easy modification / maintenence
-  - `users.nix` - for extensive user configuation
-  - `desktop.nix` - Allows multiple DEs (currently KDE or Pantheon). DE set with `myDesktop` variable in `configuation.nix`
+  - `myparams.nix` - username, hostname, ssh-key & Desktop.
+  - `packages.nix` - packages divided into categories for easy modification
+  - `users.nix` - per-user configuation
+  - `desktop.nix` - Switch between multiple DEs (currently KDE or Pantheon, soon to be Cosmic Desktop).
 - Install script:
   - `nix-setup.sh` - run this to install (full install instructions below)
-- Helper scripts to manage after install (placed in `/persist/scripts` and added to `$PATH`) 
+- Helper scripts to manage after install:
   - `changepass.sh` - script to change user password in a running system
   - `cruft.sh` - shows all files written to `/` since boot (erased next boot)
 
 ## Install Instructions
-1. Boot a [NixOS install ISO](https://github.com/chewblacka/nixos-iso/)
-2. Once in a shell clone this repo:
+1. Boot into a [NixOS install ISO](https://github.com/chewblacka/nixos-iso/)
+2. In a shell clone this repo:
 ```
 curl -L https://github.com/chewblacka/nixos/archive/refs/heads/main.zip --output main.zip
 unzip main.zip

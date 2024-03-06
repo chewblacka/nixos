@@ -11,10 +11,12 @@ function prompt {
 }
 
 function get_user_info {
-    # Gather the 1.Username, 2.Password & 3.Hostname
+    # Gather the 
+    # 1.Username, 2.Password 3.Hostname, 4. Desktop, 5. SSH-key
+
     # 1. Username
     echo "Lets set the username"
-    DEFAULT_UNAME=$(grep -oP 'myusername =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
+    DEFAULT_UNAME=$(grep -oP 'myusername =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
     echo "Default username is: $DEFAULT_UNAME"
 
     read -n 1 -srp $'Is this ok? (Y/n) ' key
@@ -42,7 +44,7 @@ function get_user_info {
     echo
     echo
     echo "Now lets set the Hostname"
-    DEFAULT_HOST=$(grep -oP 'myhostname =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
+    DEFAULT_HOST=$(grep -oP 'myhostname =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
     echo "Default Hostname is: $DEFAULT_HOST"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
     echo
@@ -54,13 +56,12 @@ function get_user_info {
       HOST=$DEFAULT_HOST
     fi
 
-
     # 4. Desktop
     echo
     echo
-    echo "Now choose the Desktop to boot into from:"
+    echo "Now choose the Desktop to boot into:"
     echo "kde pantheon"
-    DEFAULT_DESKTOP=$(grep -oP 'mydesktop =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
+    DEFAULT_DESKTOP=$(grep -oP 'mydesktop =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
     echo "Default Desktop is: $DEFAULT_DESKTOP"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
     echo
@@ -88,7 +89,7 @@ function get_user_info {
     echo
     echo
     echo "Now lets set the SSH key"
-    DEFAULT_SSHKEY=$(grep -oP 'mysshkey =.*?"\K[^"]*' "$NIXDIR/myparams_init.nix")
+    DEFAULT_SSHKEY=$(grep -oP 'mysshkey =.*?"\K[^"]*' "$NIXDIR/myparams.nix")
     SSHKEY=$DEFAULT_SSHKEY
     echo "Current SSH Key is: $DEFAULT_SSHKEY"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
@@ -101,15 +102,13 @@ function get_user_info {
     done
 
     # Write out the username 
-    sed -i "s#myusername = \".*\";#myusername = \"${UNAME}\";#" "$NIXDIR/myparams_init.nix"
+    sed -i "s#myusername = \".*\";#myusername = \"${UNAME}\";#" "$NIXDIR/myparams.nix"
     # Write out the hostname 
-    sed -i "s#myhostname = \".*\";#myhostname = \"${HOST}\";#" "$NIXDIR/myparams_init.nix"
+    sed -i "s#myhostname = \".*\";#myhostname = \"${HOST}\";#" "$NIXDIR/myparams.nix"
     # Write out the desktop 
-    sed -i "s#mydesktop = \".*\";#mydesktop = \"${DESKTOP}\";#" "$NIXDIR/myparams_init.nix"
+    sed -i "s#mydesktop = \".*\";#mydesktop = \"${DESKTOP}\";#" "$NIXDIR/myparams.nix"
     # Write out the ssh-key 
-    sed -i "s#mysshkey = \".*\";#mysshkey = \"${SSHKEY}\";#" "$NIXDIR/myparams_init.nix"
-    # copy the myparams_init file to myparams
-    cp "$NIXDIR/myparams_init.nix" "$NIXDIR/myparams.nix"
+    sed -i "s#mysshkey = \".*\";#mysshkey = \"${SSHKEY}\";#" "$NIXDIR/myparams.nix"
 }
 
 function format_disko {
@@ -135,59 +134,6 @@ function format_disko {
     umount "$MOUNT"
 }
 
-function format_manual {
-    parted "$DISK" -- mklabel gpt
-    echo "Making 1Gb ESP boot on partition 1"
-    parted "$DISK" -- mkpart ESP fat32 1MiB 1GiB
-    parted "$DISK" -- set 1 boot on
-    mkfs.vfat "$DISK"1
-
-    echo "Making 8Gb Swap on partition 2"
-    parted "$DISK" -- mkpart Swap linux-swap 1GiB 9GiB
-    mkswap -L Swap "$DISK"2
-    swapon "$DISK"2
-
-    echo "Making the rest BTRFS on partition 3"
-    parted "$DISK" -- mkpart primary 9GiB 100%
-    mkfs.btrfs -f -L Butter "$DISK"3
-
-    echo "Making BTRFS subvolumes"
-    mount "$DISK"3 /mnt
-    btrfs subvolume create /mnt/root
-    btrfs subvolume create /mnt/home
-    btrfs subvolume create /mnt/nix
-    btrfs subvolume create /mnt/persist
-    btrfs subvolume create /mnt/log
-    btrfs subvolume create /mnt/machines
-    btrfs subvolume create /mnt/portables
-
-    # We then take an empty *readonly* snapshot of the root subvolume,
-    # which we'll eventually rollback to on every boot.
-    echo "Making empty snapshot of root"
-    btrfs subvolume snapshot -r /mnt/ /mnt/root-blank
-
-    umount /mnt
-
-    # Mount the directories
-
-    mount -o subvol=root,compress=zstd,noatime "$DISK"3 /mnt
-    mkdir /mnt/home
-    mount -o subvol=home,compress=zstd,noatime "$DISK"3 /mnt/home
-    mkdir /mnt/nix
-    mount -o subvol=nix,compress=zstd,noatime "$DISK"3 /mnt/nix
-    mkdir /mnt/persist
-    mount -o subvol=persist,compress=zstd,noatime "$DISK"3 /mnt/persist
-    mkdir -p /mnt/var/log
-    mount -o subvol=log,compress=zstd,noatime "$DISK"3 /mnt/var/log
-    mkdir -p /mnt/var/lib/machines
-    mount -o subvol=machines,compress=zstd,noatime "$DISK"3 /mnt/var/lib/machines
-    mkdir -p /mnt/var/lib/portables
-    mount -o subvol=portables,compress=zstd,noatime "$DISK"3 /mnt/var/lib/portables
-    # don't forget this!
-    mkdir /mnt/boot
-    mount "$DISK"1 /mnt/boot
-}
-
 function build_file_system {
     echo "Making File system"
     DISK=/dev/vda
@@ -195,17 +141,7 @@ function build_file_system {
     echo "Drive to erase and install nixos on is: $DISK"
     read -n 1 -srp $'Is this ok? (Y/n) ' key
     echo
-    if [ "$key" == 'n' ]; then                                                                                             
-        lsblk
-        read -rp "Enter New Disk: " DISK
-        echo "Nixos will be installed on: $DISK"  
-        prompt
-    fi
 
-    echo "WARNING - About to erase $DISK and install NixOS."
-    prompt
-
-    # format_manual
     format_disko
 
     echo "Disk configuration complete!"
@@ -223,20 +159,8 @@ function generate_config {
     # Copy over our nixos config
     echo "Copying over our nixos configs"
     # Copy config files to new install
-
     cp -r "$NIXDIR"/* /mnt/etc/nixos
-    # Copy these files into persist volume (we copy from destination to include the hardware.nix)
-    mkdir -p /mnt/persist/etc/nixos
-    cp -r /mnt/etc/nixos/* /mnt/persist/etc/nixos/
 
-    echo "Copying over script files"
-    mkdir -p /mnt/persist/scripts
-    cp "$SCRIPTDIR"/* /mnt/persist/scripts
-    
-    echo "Creating persist git path"
-    mkdir -p /mnt/persist/git
-    sudo chown 1000:users /mnt/persist/git
-    
     echo "Creating trash folder for user 1000 in /persist"
     mkdir -p /mnt/persist/.Trash-1000
     sudo chown 1000:users /mnt/persist/.Trash-1000
@@ -259,6 +183,25 @@ function install_nix {
     else 
         nixos-install
     fi
+}
+
+function create_git {
+    echo "Cloning the nixos git folder into /persist/nixos"
+    cd /mnt/persist || exit
+    git clone https://github.com/chewblacka/nixos.git
+    sudo chown -R 1000:users /mnt/persist/git
+    cd /mnt/persist/nixos || exit
+    # make sure git doesn't track myparams.nix any more
+    git update-index --assume-unchanged myparams.nix
+
+    # Since (/mnt)/etc/nixos will be deleted on boot
+    # we need to preserve these 3 files:
+    echo "Preserving myparams.nix"
+    cp /mnt/etc/nixos/myparams.nix myparams.nix
+    echo "Preserving hardware-configuration.nix"
+    cp /mnt/etc/nixos/hardware-configuration.nix /persist/nixos/
+    echo "Preserving flake.lock"
+    cp /mnt/etc/nixos/flake.lock /persist/nixos/
 }
 
 function install_zsh {
@@ -287,9 +230,8 @@ get_user_info
 build_file_system
 generate_config
 install_nix
+create_git
 # install_zsh
 install_fish
 echo "Install completed!"
 echo "Reboot to use NixOS"
-
-
