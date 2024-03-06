@@ -14,10 +14,10 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 });
 
 # either ventoy-full or ventoy
-# ventoy-gui = pkgs.ventoy.override {
-#   # either withGtk3 or withQt5
-#   withQt5 = true;
-# };
+ventoy-gui = pkgs.ventoy.override {
+  # either withGtk3 or withQt5
+  withQt5 = true;
+};
 
 # Packages I'm currentl testing out
 # Once accepted place in another list
