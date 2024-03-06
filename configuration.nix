@@ -18,9 +18,9 @@
 
   # Desktop
   # myDesktop = "hyprland";
-  # myDesktop = "pantheon";
+  myDesktop = "pantheon";
   # myDesktop = "lxqt";
-  myDesktop = "kde";
+  # myDesktop = "kde";
   # This is the initial desktop as defined by install script
   # myDesktop = config.myParams.mydesktop;
 
