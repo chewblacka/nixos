@@ -202,6 +202,11 @@
     variables.EDITOR = "hx";
     # Add ~/.local/bin to PATH
     localBinInPath = true;
+    shellAliases = {
+        nixrebuild = "sudo nixos-rebuild --upgrade switch --flake path:/persist/nixos";
+        nixrebuild-boot = "sudo nixos-rebuild boot --flake path:/persist/nixos";
+        nixflake-update = "sudo nix flake update path:/persist/nixos";
+      };
   };
   
   # Shell
