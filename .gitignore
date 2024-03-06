@@ -8,7 +8,7 @@
 !flake.nix
 !flatpak.nix
 !impermanence.nix
-!myparams_init.nix
+!myparams.nix
 !packages.nix
 !users.nix
 !vm.nix
