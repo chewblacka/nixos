@@ -22,7 +22,7 @@ with lib;
       displayManager.sddm.enable = true;
       displayManager.defaultSession = "plasma";
       desktopManager.plasma6.enable = true;
-      displayManager.sddm.settings = { Theme.Font = "Hack"; };  
+      # displayManager.sddm.settings = { Theme.Font = "Hack"; };
     };
   })
   (mkIf (config.myDesktop == "hyprland") { 

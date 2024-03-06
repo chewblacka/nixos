@@ -6,7 +6,6 @@
 !desktop.nix
 !disko-config.nix
 !flake.nix
-!flake.lock
 !flatpak.nix
 !impermanence.nix
 !packages.nix

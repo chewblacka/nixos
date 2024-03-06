@@ -191,7 +191,7 @@ function create_git {
     git clone https://github.com/chewblacka/nixos.git
     sudo chown -R 1000:users /mnt/persist/git
     cd /mnt/persist/nixos || exit
-    # make sure git doesn't track myparams.nix any more
+    # make sure git doesn't track myparams.nix
     git update-index --assume-unchanged myparams.nix
 
     # Since (/mnt)/etc/nixos will be deleted on boot
