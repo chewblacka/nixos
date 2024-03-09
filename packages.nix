@@ -24,6 +24,7 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 _testing = [
     # python3Packages.pyradios
     mpv
+    vlc
     # openvswitch
     # davinci-resolve
     # brave
@@ -42,6 +43,7 @@ _testing = [
     # logseq
     # unstable.remnote
     get_iplayer
+    yt-dlp
     cool-retro-term
     glxinfo        
     firefox

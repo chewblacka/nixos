@@ -115,19 +115,21 @@
   ### Drivers ####
   ################
   
+  # AMD Drivers (for passthrough)
   # services.xserver.videoDrivers = [ "amdgpu" "radeon" "modesetting" "fbdev" ];
   # boot.initrd.kernelModules = [ "radeon" ];
   # boot.kernelParams = [
   #   "video=HDMI-A-1:1920x1200@60"
   #   "video=VIRTUAL-1:1920x1092@60"
   # ];
+
   # OpenGL ###
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = [ pkgs.libGL pkgs.libGLU ];
-  };
+  # hardware.opengl = {
+  #   enable = true;
+  #   driSupport = true;
+  #   driSupport32Bit = true;
+  #   extraPackages = [ pkgs.libGL pkgs.libGLU ];
+  # };
 
   ### Spice ###
   # systemd.user.services.spice-agent = {
@@ -254,17 +256,17 @@
   ############
 
   ### Sound ###
-  ## https://nixos.wiki/wiki/PipeWire
-  ## rtkit is optional but recommended
-  # security.rtkit.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  # ## Uncomment to use JACK applications:
-  # # jack.enable = true;
-  # };
+  # https://nixos.wiki/wiki/PipeWire
+  # rtkit is optional but recommended
+   security.rtkit.enable = true;
+   services.pipewire = {
+     enable = true;
+     alsa.enable = true;
+     alsa.support32Bit = true;
+     pulse.enable = true;
+   ## Uncomment to use JACK applications:
+   # jack.enable = true;
+   };
 
   # ### Flatpak ###
   # services.flatpak.enable = true;
