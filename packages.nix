@@ -23,8 +23,11 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Once accepted place in another list
 _testing = [
     # python3Packages.pyradios
+    (inxi.override { withRecommends = true; })
+    # Override the package definition
     mpv
     vlc
+    kdePackages.plasmatube
     # openvswitch
     # davinci-resolve
     # brave
