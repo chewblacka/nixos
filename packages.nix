@@ -23,7 +23,13 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Once accepted place in another list
 _testing = [
     # python3Packages.pyradios
+    electrum
     (inxi.override { withRecommends = true; })
+    # (lshw.override { withGUI = true; })
+    # anki-bin
+    typst
+    typst-lsp
+    typst-fmt
     # Override the package definition
     mpv
     vlc
@@ -35,7 +41,6 @@ _testing = [
     # spotify
     # ventoy-gui
     # thunderbird
-    nixpkgs-review
     # codebraid
     # git-credential-manager
     tinycc
@@ -50,18 +55,15 @@ _testing = [
     cool-retro-term
     glxinfo        
     firefox
-    nix-update
     lf
     ueberzug
-    nix-index
-    nix-tree
     envsubst # Needed for mathematica podman install
     xorg.xhost # Mathematica
     spaceFM
     # distrobox-git
-    distrobox
+    # distrobox
     # unstable.distrobox
-    toolbox
+    # toolbox
     # appimage-run
     # unstable.freetube
     # anki
@@ -75,6 +77,7 @@ my-package-set = builtins.concatLists [
     _helix # Packages relating to helix
     _shell 
     _cli
+    _nix
     # security
     # gui
     # browsers
@@ -84,6 +87,17 @@ my-package-set = builtins.concatLists [
     _vlang
     # install
 ]; 
+
+# Tools needed for building on nix
+_nix = [
+    dpkg
+    alejandra
+    nixpkgs-review
+    nix-update
+    nix-index
+    nix-tree
+    common-updater-scripts
+];
 
 _vlang = [
     xorg.libX11.dev
@@ -111,7 +125,6 @@ _cli = [
     direnv
     pv # progress viewer
     wget
-    # git
     unzip
     ripgrep
     fzf
@@ -125,6 +138,7 @@ _cli = [
     efibootmgr # for managing efi
     zsh
     docfd
+
     # distrobox
     
     # Are these needed?

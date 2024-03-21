@@ -9,9 +9,7 @@
       ./users.nix
       ./myparams.nix
       ./desktop.nix
-      (import ./disko-config.nix {
-        disks = [ "/dev/vda" "/dev/vdb" ]; 
-      })
+      (import ./disko-config.nix { disks = [ "/dev/vda" "/dev/vdb" ]; })
       ./vm.nix
       ./flatpak.nix
     ];
@@ -124,12 +122,12 @@
   # ];
 
   # OpenGL ###
-  # hardware.opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   driSupport32Bit = true;
-  #   extraPackages = [ pkgs.libGL pkgs.libGLU ];
-  # };
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = [ pkgs.libGL pkgs.libGLU ];
+  };
 
   ### Spice ###
   # systemd.user.services.spice-agent = {
@@ -259,6 +257,7 @@
   # https://nixos.wiki/wiki/PipeWire
   # rtkit is optional but recommended
    security.rtkit.enable = true;
+   hardware.pulseaudio.enable = false;
    services.pipewire = {
      enable = true;
      alsa.enable = true;
@@ -319,9 +318,17 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    config.credential.helper = "libsecret";
+    config = { 
+      credential.helper = "libsecret";
+      init.defaultBranch = "master";
+    };
   };
-  
+
+  ### GPG ###
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-tty;
+  };
 
   # Read the doc before updating
   system.stateVersion = "23.05";

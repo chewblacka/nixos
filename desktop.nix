@@ -22,7 +22,7 @@ with lib;
       enable = true;
       displayManager.sddm.enable = true;
       # This option doesn't work for plasma any more
-      displayManager.defaultSession = "plasma";
+      displayManager.defaultSession = "plasmax11";
     };
   })
   (mkIf (config.myDesktop == "hyprland") { 
