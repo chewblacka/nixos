@@ -16,9 +16,9 @@
 
   # Desktop
   # myDesktop = "hyprland";
-  # myDesktop = "pantheon";
+  myDesktop = "pantheon";
   # myDesktop = "lxqt";
-  myDesktop = "kde";
+  # myDesktop = "kde";
   # This is the initial desktop as defined by install script
   # myDesktop = config.myParams.mydesktop;
 
@@ -202,6 +202,10 @@
     variables.EDITOR = "hx";
     # Add ~/.local/bin to PATH
     localBinInPath = true;
+    sessionVariables = {
+      # flake location for nh command
+      FLAKE = "/persist/nixos";
+    };
     shellAliases = {
         nixrebuild = "sudo nixos-rebuild --upgrade switch --flake path:/persist/nixos";
         nixrebuild-boot = "sudo nixos-rebuild boot --flake path:/persist/nixos";
@@ -220,7 +224,7 @@
   # };
 
   # System Packages
-  environment.systemPackages = with import ./packages.nix {inherit pkgs config; }; my-package-set;
+  environment.systemPackages = with import ./packages.nix {inherit pkgs config inputs; }; my-package-set;
 
   # Nerd fonts 
   fonts.packages = with pkgs; [

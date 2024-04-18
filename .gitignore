@@ -5,8 +5,10 @@
 !configuration.nix
 !desktop.nix
 !disko-config.nix
+!flake.lock
 !flake.nix
 !flatpak.nix
+!hardware-configuration.nix
 !impermanence.nix
 !packages.nix
 !users.nix

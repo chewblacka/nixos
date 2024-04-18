@@ -22,14 +22,13 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Packages I'm currentl testing out
 # Once accepted place in another list
 _testing = [
+    jujutsu
+    # inputs.helix.packages."${pkgs.system}".helix
     # python3Packages.pyradios
     electrum
     (inxi.override { withRecommends = true; })
     # (lshw.override { withGUI = true; })
     # anki-bin
-    typst
-    typst-lsp
-    typst-fmt
     # Override the package definition
     mpv
     vlc
@@ -61,7 +60,7 @@ _testing = [
     xorg.xhost # Mathematica
     spaceFM
     # distrobox-git
-    # distrobox
+    distrobox
     # unstable.distrobox
     # toolbox
     # appimage-run
@@ -74,7 +73,8 @@ _testing = [
 # Otherwise recursion nastiness
 my-package-set = builtins.concatLists [
     _testing
-    _helix # Packages relating to helix
+    _helix
+    _typst
     _shell 
     _cli
     _nix
@@ -97,6 +97,15 @@ _nix = [
     nix-index
     nix-tree
     common-updater-scripts
+    any-nix-shell
+    nix-init
+    nh
+    # the below 2 are part of nh, but useful on their own too
+    # nom - a drop-in replacement for nix command
+    nix-output-monitor
+    # nvd can be used to e.g. diff system generations i.e.:
+    # nvd diff /nix/var/nix/profiles/system-{463,464}-link
+    nvd
 ];
 
 _vlang = [
@@ -108,10 +117,17 @@ _vlang = [
 
 _helix = [
     helix
-    # nix lsp
+    neovim
+    # lsp for nix
     nil
-    # bash lsp
+    # lsp for bash
     nodePackages.bash-language-server
+];
+
+_typst = [
+    typst
+    typst-lsp
+    typstfmt
 ];
 
 _shell = [
