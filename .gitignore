@@ -1,11 +1,10 @@
 # Ignore everything
 *
-# Include:
+# Except:
 !.gitignore
 !configuration.nix
 !desktop.nix
 !disko-config.nix
-!flake.lock
 !flake.nix
 !flatpak.nix
 !hardware-configuration.nix

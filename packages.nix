@@ -22,17 +22,20 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Packages I'm currentl testing out
 # Once accepted place in another list
 _testing = [
+    # (vivaldi.override { proprietaryCodecs = true; })
+    (vivaldi.override { proprietaryCodecs = false; })
+    # vivaldi
     jujutsu
     # inputs.helix.packages."${pkgs.system}".helix
     # python3Packages.pyradios
     electrum
-    (inxi.override { withRecommends = true; })
+    # (inxi.override { withRecommends = true; })
     # (lshw.override { withGUI = true; })
     # anki-bin
     # Override the package definition
-    mpv
+    # mpv
     vlc
-    kdePackages.plasmatube
+    # kdePackages.plasmatube
     # openvswitch
     # davinci-resolve
     # brave
@@ -41,24 +44,18 @@ _testing = [
     # ventoy-gui
     # thunderbird
     # codebraid
-    # git-credential-manager
-    tinycc
-    grim
-    # unstable.gnome-text-editor
-    # gnome.gedit
+    # tinycc
+    # grim
     # pdfstudio2023
     # logseq
-    # unstable.remnote
     get_iplayer
     yt-dlp
-    cool-retro-term
+    # cool-retro-term
     glxinfo        
-    firefox
+    # firefox
     lf
     ueberzug
-    envsubst # Needed for mathematica podman install
-    xorg.xhost # Mathematica
-    spaceFM
+    # spaceFM
     # distrobox-git
     distrobox
     # unstable.distrobox
@@ -78,25 +75,29 @@ my-package-set = builtins.concatLists [
     _shell 
     _cli
     _nix
-    # security
-    # gui
-    # browsers
+    # _security
+    # _gui
+    _browsers
     _misc
     _DE # DE specific packages
     _scripting
     _vlang
+    # _mathematica
     # install
 ]; 
 
 # Tools needed for building on nix
 _nix = [
     dpkg
+    # nix formatters
     alejandra
+    nixfmt-rfc-style
     nixpkgs-review
     nix-update
     nix-index
     nix-tree
     common-updater-scripts
+    # nix-shell into fish / zsh 
     any-nix-shell
     nix-init
     nh
@@ -115,6 +116,11 @@ _vlang = [
     libGL.dev  
 ];
 
+_mathematica = [
+    envsubst # Needed for mathematica podman install
+    xorg.xhost # Mathematica
+];
+
 _helix = [
     helix
     neovim
@@ -128,6 +134,7 @@ _typst = [
     typst
     typst-lsp
     typstfmt
+    # hayagriva
 ];
 
 _shell = [
@@ -151,6 +158,7 @@ _cli = [
     trash-cli
     tree
     neofetch
+    fastfetch # neofetch replacement
     efibootmgr # for managing efi
     zsh
     docfd
@@ -184,7 +192,7 @@ _gui = [
 
 _browsers = [
     firefox
-    librewolf # hardened ff
+    # librewolf # hardened ff
     # unboogled-chromium
 ];
 

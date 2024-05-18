@@ -14,13 +14,21 @@
       ./flatpak.nix
     ];
 
+  specialisation = {
+    pantheon.configuration = {
+      # system.nixos.tags = [ "pantheon" ];
+      myDesktop = "pantheon";
+    };
+  };
+
   # Desktop
+  myDesktop = "kde";
+  # myDesktop = "pantheon";
   # myDesktop = "hyprland";
-  myDesktop = "pantheon";
   # myDesktop = "lxqt";
-  # myDesktop = "kde";
   # This is the initial desktop as defined by install script
   # myDesktop = config.myParams.mydesktop;
+
 
   # /etc/nixpkgs
   environment.etc.nixpkgs.source = pkgs.path;
@@ -256,6 +264,9 @@
   ############
   # Services #
   ############
+
+  ### Jellyfin
+  # services.jellyfin.enable = true;
 
   ### Sound ###
   # https://nixos.wiki/wiki/PipeWire
