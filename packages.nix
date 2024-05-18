@@ -26,6 +26,7 @@ _testing = [
     (vivaldi.override { proprietaryCodecs = false; })
     # vivaldi
     jujutsu
+    audacious
     # inputs.helix.packages."${pkgs.system}".helix
     # python3Packages.pyradios
     electrum

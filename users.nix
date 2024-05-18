@@ -38,6 +38,11 @@ in
     fsType = "cifs";
     options = [ "username=shareuser" "password=''" "rw" "uid=1000" "gid=100" "x-systemd.automount" "noauto" ];
   };
+  fileSystems."/home/${myuser}/Music" = {
+    device = "//192.168.122.1/Music";
+    fsType = "cifs";
+    options = [ "username=shareuser" "password=''" "rw" "uid=1000" "gid=100" "x-systemd.automount" "noauto" ];
+  };
 
   # doas rules
   security.doas.extraRules = [

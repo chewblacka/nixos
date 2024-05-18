@@ -22,7 +22,7 @@
   };
 
   # Desktop
-  myDesktop = "kde";
+  # myDesktop = "kde";
   # myDesktop = "pantheon";
   # myDesktop = "hyprland";
   # myDesktop = "lxqt";
