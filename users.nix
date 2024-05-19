@@ -32,11 +32,14 @@ in
     # packages = with pkgs; [ ];
   };
  
-  # Automount Dropbox in /home/${user}/Dropbox
+  # Mount virtiofs shares
   fileSystems."/home/${myuser}/Dropbox" = {
-    device = "//192.168.122.1/Dropbox/Fedora";
-    fsType = "cifs";
-    options = [ "username=shareuser" "password=''" "rw" "uid=1000" "gid=100" "x-systemd.automount" "noauto" ];
+    device = "Dropbox";
+    fsType = "virtiofs";
+  };
+  fileSystems."/home/${myuser}/Music" = {
+    device = "Music";
+    fsType = "virtiofs";
   };
 
   # doas rules
