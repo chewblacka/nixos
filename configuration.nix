@@ -21,7 +21,6 @@
   };
 
   # Desktop
-  #
   # myDesktop = "kde";
   # myDesktop = "pantheon";
   # myDesktop = "hyprland";
