@@ -129,6 +129,8 @@ function format_disko {
     # by systemd, stopping deletion of root subvolume
     mkdir -p "$MOUNT/root/srv"
     mkdir -p "$MOUNT/root/tmp"
+    # Having a /mnt folder can be useful too
+    mkdir -p "$MOUNT/root/mnt"
     btrfs subvolume snapshot -r /mnt2/root /mnt2/root-blank
     btrfs subvolume list /mnt2
     umount "$MOUNT"

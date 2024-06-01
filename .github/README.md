@@ -10,7 +10,7 @@ Configuration files for NixOS with an ephemeral root, erased every boot.
   - `myparams.nix` - username, hostname, ssh-key & Desktop.
   - `packages.nix` - packages divided into categories for easy modification
   - `users.nix` - per-user configuation
-  - `desktop.nix` - Switch between multiple DEs (currently KDE or Pantheon, soon to be Cosmic Desktop).
+  - `desktop.nix` - Switch between multiple DEs (currently KDE, Pantheon, Hyprland or Budgie).
 - Install script:
   - `nix-setup.sh` - run this to install (full install instructions below)
 - Helper scripts to manage after install:

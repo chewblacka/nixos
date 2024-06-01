@@ -15,9 +15,8 @@
     ];
 
   specialisation = {
-    pantheon.configuration = {
-      # system.nixos.tags = [ "pantheon" ];
-      myDesktop = "pantheon";
+    budgie.configuration = {
+      myDesktop = "budgie";
     };
   };
 
@@ -25,7 +24,7 @@
   # myDesktop = "kde";
   # myDesktop = "pantheon";
   # myDesktop = "hyprland";
-  # myDesktop = "lxqt";
+  # myDesktop = "budgie";
   # This is the initial desktop as defined by install script
   # myDesktop = config.myParams.mydesktop;
 

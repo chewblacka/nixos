@@ -16,6 +16,7 @@ with lib;
     };
   };
   config = mkMerge [
+
   (mkIf (config.myDesktop == "kde") { 
     services.desktopManager.plasma6.enable = true;
     services = {
@@ -24,6 +25,7 @@ with lib;
       displayManager.defaultSession = "plasmax11";
     };
   })
+
   (mkIf (config.myDesktop == "hyprland") { 
     services.xserver = {
       enable = true;
@@ -63,6 +65,7 @@ with lib;
     #   pkgs.rofi-wayland
     # ];
   })
+
   (mkIf (config.myDesktop == "pantheon") { 
     services.xserver = {
       enable = true;
@@ -81,17 +84,24 @@ with lib;
       };
     };
     programs.pantheon-tweaks.enable = true;
-    })
-  (mkIf (config.myDesktop == "lxqt") { 
+  })
+
+  (mkIf (config.myDesktop == "budgie") { 
     services.xserver = {
       enable = true;
-      displayManager.lightdm.autoLogin.timeout = 3600;
-      desktopManager.lxqt = {
+      desktopManager.budgie.enable = true;
+      displayManager.lightdm = {
         enable = true;
+        autoLogin.timeout = 3600;
       };
     };
-    programs.pantheon-tweaks.enable = true;
-    })
+    xdg.portal.enable = true;
+    # xdg.portal.extraPortals = [ 
+    #   pkgs.xdg-desktop-portal
+    #   pkgs.xdg-desktop-portal-gtk 
+    # ];
+  })
+
   # Common desktop config settings go below
   ({
     # X11 keymap

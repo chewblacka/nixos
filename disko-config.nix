@@ -62,16 +62,16 @@ in
                         mountpoint = "/persist";
                         mountOptions = [ "compress=zstd" "noatime" ];
                       };
-                      "@/log" = {
+                      "@/var-lib" = {
+                        mountpoint = "/var/lib";
+                        mountOptions = [ "compress=zstd" "noatime" ];
+                      };
+                      "@/var-log" = {
                         mountpoint = "/var/log";
                         mountOptions = [ "compress=zstd" "noatime" ];
                       };
-                      "@/machines" = {
-                        mountpoint = "/var/lib/machines";
-                        mountOptions = [ "compress=zstd" "noatime" ];
-                      };
-                      "@/portables" = {
-                        mountpoint = "/var/lib/portables";
+                      "@/var-tmp" = {
+                        mountpoint = "/var/tmp";
                         mountOptions = [ "compress=zstd" "noatime" ];
                       };
                     }
@@ -90,16 +90,16 @@ in
                         mountpoint = "/persist";
                         mountOptions = [ "compress=zstd" "noatime" ];
                       };
-                      "@/log" = {
+                      "@/var-lib" = {
+                        mountpoint = "/var/lib";
+                        mountOptions = [ "compress=zstd" "noatime" ];
+                      };
+                      "@/var-log" = {
                         mountpoint = "/var/log";
                         mountOptions = [ "compress=zstd" "noatime" ];
                       };
-                      "@/machines" = {
-                        mountpoint = "/var/lib/machines";
-                        mountOptions = [ "compress=zstd" "noatime" ];
-                      };
-                      "@/portables" = {
-                        mountpoint = "/var/lib/portables";
+                      "@/var-tmp" = {
+                        mountpoint = "/var/tmp";
                         mountOptions = [ "compress=zstd" "noatime" ];
                       };
                     };
@@ -132,10 +132,6 @@ in
                   "@/home" = {
                     mountpoint = "/home";
                     mountOptions = [ "compress=zstd" ];
-                  };
-                  "@/persist" = {
-                    # mountpoint = "/mnt/persist";
-                    mountOptions = [ "compress=zstd" "noatime" ];
                   };
                 };
               };

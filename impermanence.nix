@@ -13,6 +13,7 @@ in
   # filesystem modifications needed for impermanence
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
+  fileSystems."/var/tmp".neededForBoot = true;
 
   # reset / at each boot
   # Note `lib.mkBefore` is used instead of `lib.mkAfter` here.
@@ -22,12 +23,10 @@ in
     # Mount the btrfs root to /mnt
     mount -o subvol="@" /dev/vda3 /mnt
 
-    # Delete the root subvolume
-    echo "deleting root subvolume..." &&
+    # Delete root subvolume
     btrfs subvolume delete /mnt/root
 
     # Restore new root from root-blank
-    echo "restoring blank @root subvolume..."
     btrfs subvolume snapshot /mnt/root-blank /mnt/root
 
     # Unmount /mnt and continue boot process

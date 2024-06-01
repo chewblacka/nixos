@@ -27,6 +27,7 @@ _testing = [
     # vivaldi
     jujutsu
     audacious
+    ocenaudio
     # inputs.helix.packages."${pkgs.system}".helix
     # python3Packages.pyradios
     electrum
@@ -154,6 +155,7 @@ _cli = [
     fzf
     eza # replacement for exa
     bat
+    fd # find replacement
     jq
     # appimage-run
     trash-cli
