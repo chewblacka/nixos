@@ -22,15 +22,17 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Packages I'm currentl testing out
 # Once accepted place in another list
 _testing = [
+    # ulauncher
     # (vivaldi.override { proprietaryCodecs = true; })
-    (vivaldi.override { proprietaryCodecs = false; })
+    # (vivaldi.override { proprietaryCodecs = false; })
     # vivaldi
+    baresip
     jujutsu
     audacious
     ocenaudio
     # inputs.helix.packages."${pkgs.system}".helix
     # python3Packages.pyradios
-    electrum
+    # electrum
     # (inxi.override { withRecommends = true; })
     # (lshw.override { withGUI = true; })
     # anki-bin
@@ -129,7 +131,7 @@ _helix = [
     # lsp for nix
     nil
     # lsp for bash
-    nodePackages.bash-language-server
+    # nodePackages.bash-language-server
 ];
 
 _typst = [

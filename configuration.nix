@@ -129,12 +129,10 @@
   # ];
 
   # OpenGL ###
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = [ pkgs.libGL pkgs.libGLU ];
-  };
+  # hardware.graphics = {
+  #   enable = true;
+  #   extraPackages = [ pkgs.libGL pkgs.libGLU ];
+  # };
 
   ### Spice ###
   # systemd.user.services.spice-agent = {
