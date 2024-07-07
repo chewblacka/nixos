@@ -86,7 +86,7 @@ my-package-set = builtins.concatLists [
     _DE # DE specific packages
     _scripting
     _vlang
-    # _mathematica
+    _mathematica
     # install
 ]; 
 
