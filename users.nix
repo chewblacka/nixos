@@ -11,7 +11,7 @@ in
   users.users.${myuser} = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "video" "audio" ];
+    extraGroups = [ "wheel" "video" "audio" "podman"];
     ### Shell
     shell = pkgs.fish;
     # shell = pkgs.zsh;

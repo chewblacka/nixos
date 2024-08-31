@@ -308,6 +308,9 @@
       enable = true;
       # docker alias for podman
       dockerCompat = true;
+      # dockerSocket.enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+      # networkSocket.enable = true;
     };
   };
 

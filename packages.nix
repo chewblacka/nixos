@@ -13,12 +13,6 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
     };    
 });
 
-# either ventoy-full or ventoy
-# ventoy-gui = pkgs.ventoy.override {
-#   # either withGtk3 or withQt5
-#   withQt5 = true;
-# };
-
 # Packages I'm currentl testing out
 # Once accepted place in another list
 _testing = [
@@ -30,13 +24,11 @@ _testing = [
     jujutsu
     audacious
     ocenaudio
-    # inputs.helix.packages."${pkgs.system}".helix
     # python3Packages.pyradios
     # electrum
     # (inxi.override { withRecommends = true; })
     # (lshw.override { withGUI = true; })
     # anki-bin
-    # Override the package definition
     # mpv
     vlc
     # kdePackages.plasmatube
@@ -45,7 +37,6 @@ _testing = [
     # brave
     # OVMFFull.fd
     # spotify
-    # ventoy-gui
     # thunderbird
     # codebraid
     # tinycc
