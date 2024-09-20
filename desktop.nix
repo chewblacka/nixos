@@ -6,6 +6,9 @@
 # kde
 # pantheon
 
+let
+  myuser = config.myParams.myusername;
+in
 with lib;
 {
   options = {  
@@ -21,8 +24,12 @@ with lib;
     services.desktopManager.plasma6.enable = true;
     services = {
       xserver.enable = true;
-      displayManager.sddm.enable = true;
-      displayManager.defaultSession = "plasmax11";
+      displayManager = {
+        sddm.enable = true;
+        defaultSession = "plasmax11";
+        autoLogin.enable = true;
+	      autoLogin.user = "${myuser}";
+      };
     };
   })
 

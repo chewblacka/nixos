@@ -53,6 +53,7 @@ _testing = [
     # spaceFM
     # distrobox-git
     distrobox
+    onedrive
     # unstable.distrobox
     # toolbox
     # appimage-run
