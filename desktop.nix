@@ -90,7 +90,6 @@ with lib;
         ];
       };
     };
-    programs.pantheon-tweaks.enable = true;
   })
 
   (mkIf (config.myDesktop == "budgie") { 

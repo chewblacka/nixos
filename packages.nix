@@ -24,6 +24,7 @@ _testing = [
     jujutsu
     audacious
     ocenaudio
+    (ventoy.override { defaultGuiType = "gtk3"; })
     # python3Packages.pyradios
     # electrum
     # (inxi.override { withRecommends = true; })
@@ -215,6 +216,7 @@ if (config.myDesktop == "kde") then
 else if (config.myDesktop == "pantheon") then
 [
     gsettings-desktop-schemas
+    pantheon-tweaks
 ]
 else if (config.myDesktop == "hyprland") then
 [

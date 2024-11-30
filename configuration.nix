@@ -14,15 +14,15 @@
       ./flatpak.nix
     ];
 
-  specialisation = {
-    budgie.configuration = {
-      myDesktop = "budgie";
-    };
-  };
+  # specialisation = {
+  #   budgie.configuration = {
+  #     myDesktop = "budgie";
+  #   };
+  # };
 
   # Desktop
   # myDesktop = "kde";
-  # myDesktop = "pantheon";
+  myDesktop = "pantheon";
   # myDesktop = "hyprland";
   # myDesktop = "budgie";
   # This is the initial desktop as defined by install script
@@ -212,9 +212,9 @@
       FLAKE = "/persist/nixos";
     };
     shellAliases = {
-        nixrebuild = "sudo nixos-rebuild --upgrade switch --flake path:/persist/nixos";
-        nixrebuild-boot = "sudo nixos-rebuild boot --flake path:/persist/nixos";
-        nixflake-update = "sudo nix flake update path:/persist/nixos";
+        nixrebuild = "sudo nixos-rebuild --upgrade switch --flake path:/persist/nixos --impure";
+        nixrebuild-boot = "sudo nixos-rebuild boot --flake path:/persist/nixos --impure";
+        nixflake-update = "sudo nix flake update --flake path:/persist/nixos";
       };
   };
   
@@ -233,7 +233,9 @@
 
   # Nerd fonts 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.hack
   ];
 
   # Firejailed apps
