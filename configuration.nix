@@ -21,8 +21,8 @@
   # };
 
   # Desktop
-  # myDesktop = "kde";
-  myDesktop = "pantheon";
+  myDesktop = "kde";
+  # myDesktop = "pantheon";
   # myDesktop = "hyprland";
   # myDesktop = "budgie";
   # This is the initial desktop as defined by install script

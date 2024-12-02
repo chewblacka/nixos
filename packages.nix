@@ -16,6 +16,8 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Packages I'm currentl testing out
 # Once accepted place in another list
 _testing = [
+    bitwig-studio
+    decent-sampler
     # ulauncher
     # (vivaldi.override { proprietaryCodecs = true; })
     # (vivaldi.override { proprietaryCodecs = false; })
@@ -206,7 +208,7 @@ _misc = [
 _DE = (
 if (config.myDesktop == "kde") then
 [
-    discover
+    kdePackages.discover
     # kdePackages.kate (kate installed by default in Plasma 6)
     # packagekit
     # kdePackages.packagekit-qt
