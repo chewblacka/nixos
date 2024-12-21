@@ -91,6 +91,7 @@
     keyMap = "uk";
   };
 
+  services.ntp.enable = true;
 
   ################
   ##  Network  ###
@@ -266,6 +267,9 @@
 
   ### Jellyfin
   # services.jellyfin.enable = true;
+
+  ### Onedrive
+  # services.onedrive.enable = true;
 
   ### Sound ###
   # https://nixos.wiki/wiki/PipeWire

@@ -16,7 +16,9 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Packages I'm currentl testing out
 # Once accepted place in another list
 _testing = [
-    bitwig-studio
+    # bitwig-studio
+    tenacity
+    audacity
     decent-sampler
     # ulauncher
     # (vivaldi.override { proprietaryCodecs = true; })
