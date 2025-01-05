@@ -13,7 +13,8 @@ elif
   exit
 fi
 
-sudo sh -c 'mkpasswd -m sha-512 "$p1" > /persist/passwords/user'
+# sudo sh -c 'mkpasswd -m sha-512 "$p1" > /persist/passwords/user'
+doas sh -c 'mkpasswd -m sha-512 "$p1" > /persist/passwords/user'
 echo
 echo "New password written to /persist/passwords/user"
 echo "Password will become active next time you run:" 

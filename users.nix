@@ -18,7 +18,7 @@ in
     ### Password
     # initialHashedPassword = "";
     # Have moved below line to impermanence.nix
-    # passwordFile = "/persist/passwords/user";
+    hashedPasswordFile = "/persist/passwords/user";
     ### ssh
     openssh.authorizedKeys.keys = [ "${mysshkey}" ];
     ### User namespaces

@@ -167,8 +167,8 @@
   # Enable doas.
   security.doas.enable = true;
   # Turn off sudo & enable sudo-rs.
-  security.sudo.enable = false;
-  security.sudo-rs.enable = true;
+  security.sudo.enable = true;
+  # security.sudo-rs.enable = true;
 
   # security.sudo-rs.extraConfig = ''
   #   # rollback results in sudo lectures after each reboot
@@ -275,7 +275,7 @@
   # https://nixos.wiki/wiki/PipeWire
   # rtkit is optional but recommended
    security.rtkit.enable = true;
-   hardware.pulseaudio.enable = false;
+   services.pulseaudio.enable = false;
    services.pipewire = {
      enable = true;
      alsa.enable = true;
