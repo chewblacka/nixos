@@ -133,7 +133,7 @@ _helix = [
 
 _typst = [
     typst
-    typst-lsp
+    tinymist # new form of typst-lsp
     typstfmt
     # hayagriva
 ];
