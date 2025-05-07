@@ -17,6 +17,7 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Once accepted place in another list
 _testing = [
     # bitwig-studio
+    archi
     tenacity
     audacity
     decent-sampler
