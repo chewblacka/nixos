@@ -29,7 +29,7 @@ _testing = [
     jujutsu
     audacious
     ocenaudio
-    (ventoy.override { defaultGuiType = "gtk3"; })
+    # (ventoy.override { defaultGuiType = "gtk3"; })
     # python3Packages.pyradios
     # electrum
     # (inxi.override { withRecommends = true; })

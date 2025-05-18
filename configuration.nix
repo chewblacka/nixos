@@ -60,6 +60,9 @@
     };
   };
 
+  # Mitigate the "download buffer is full" warning by setting to 512mb
+  nix.settings.download-buffer-size = 524288000;
+
   # Keep a reference to the source flake that generated each generations
   environment.etc."current-nixos".source = ./.;
 
