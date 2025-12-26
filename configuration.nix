@@ -216,9 +216,9 @@
       FLAKE = "/persist/nixos";
     };
     shellAliases = {
-        nixrebuild = "sudo nixos-rebuild --upgrade switch --flake path:/persist/nixos --impure";
-        nixrebuild-boot = "sudo nixos-rebuild boot --flake path:/persist/nixos --impure";
-        nixflake-update = "sudo nix flake update --flake path:/persist/nixos";
+        nixrebuild = "doas nixos-rebuild --upgrade switch --flake path:/persist/nixos --impure";
+        nixrebuild-boot = "doas nixos-rebuild boot --flake path:/persist/nixos --impure";
+        nixflake-update = "nix flake update --flake path:/persist/nixos";
       };
   };
   
@@ -267,6 +267,9 @@
   ############
   # Services #
   ############
+
+  ### Stirling PDF
+  services.stirling-pdf.enable = true;
 
   ### Jellyfin
   # services.jellyfin.enable = true;
@@ -343,7 +346,7 @@
     enable = true;
     package = pkgs.gitFull;
     config = { 
-      credential.helper = "libsecret";
+      # credential.helper = "libsecret";
       init.defaultBranch = "master";
     };
   };

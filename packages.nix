@@ -17,18 +17,23 @@ distrobox-git = pkgs.distrobox.overrideAttrs (oldAttrs: {
 # Once accepted place in another list
 _testing = [
     # bitwig-studio
-    archi
-    tenacity
-    audacity
+    # archi
+    # tenacity
+    # audacity
+    await
+    equibop
+    profanity
     decent-sampler
+    apx
+    apx-gui
     # ulauncher
     # (vivaldi.override { proprietaryCodecs = true; })
     # (vivaldi.override { proprietaryCodecs = false; })
     # vivaldi
-    baresip
-    jujutsu
-    audacious
-    ocenaudio
+    # baresip
+    # jujutsu
+    # audacious
+    # ocenaudio
     # (ventoy.override { defaultGuiType = "gtk3"; })
     # python3Packages.pyradios
     # electrum
@@ -52,14 +57,14 @@ _testing = [
     get_iplayer
     yt-dlp
     # cool-retro-term
-    glxinfo        
+    mesa-demos # new name for glxinfo        
     # firefox
     lf
     ueberzug
     # spaceFM
     # distrobox-git
     distrobox
-    onedrive
+    # onedrive
     # unstable.distrobox
     # toolbox
     # appimage-run
@@ -135,7 +140,7 @@ _helix = [
 _typst = [
     typst
     tinymist # new form of typst-lsp
-    typstfmt
+    typstyle
     # hayagriva
 ];
 
